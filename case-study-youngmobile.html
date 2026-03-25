@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: Young Mobile — Serious Onions</title>
+  <meta name="description" content="How we built the Young Mobile brand and e-commerce site — a UK retailer distributing free PAYG SIM cards from Vodafone, O2, VOXI, giffgaff and EE.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero { padding: 160px 0 60px; }
+    .page-hero .label { margin-bottom: 12px; }
+    .page-hero h1 { font-family: var(--display); font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: var(--dark); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 16px; }
+    .page-hero h1 em { font-style: italic; color: var(--accent); }
+    .page-hero p { font-size: 17px; color: var(--muted); max-width: 520px; line-height: 1.7; }
+
+    .case-meta { padding: 0 0 60px; }
+    .meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .meta-item { padding: 24px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); }
+    .meta-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 6px; }
+    .meta-value { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--dark); }
+
+    .case-content { padding: 0 0 80px; }
+    .case-content h2 { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--dark); margin-bottom: 16px; margin-top: 56px; letter-spacing: -0.5px; }
+    .case-content h2:first-child { margin-top: 0; }
+    .case-content p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; max-width: 720px; }
+
+    .case-highlight {
+      padding: 48px; background: var(--dark); color: #fff; border-radius: var(--radius);
+      margin: 40px 0;
+    }
+    .case-highlight h3 { font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
+    .case-highlight p { color: #ccc; max-width: none; }
+
+    .deliverables { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 32px 0; }
+    .deliverable {
+      padding: 24px; background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); transition: border-color 0.2s, transform 0.3s;
+    }
+    .deliverable:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .deliverable h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .deliverable p { font-size: 13px; margin-bottom: 0; }
+
+    .case-preview {
+      margin: 40px 0; border-radius: var(--radius); overflow: hidden;
+      background: linear-gradient(135deg, #752C86, #9b3daf);
+      padding: 48px; text-align: center;
+    }
+    .case-preview .mock-browser {
+      max-width: 600px; margin: 0 auto; background: #fff; border-radius: 8px;
+      overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+    }
+    .mock-browser-bar { background: #f0f0f0; padding: 10px 14px; display: flex; gap: 6px; }
+    .mock-browser-bar span { width: 10px; height: 10px; border-radius: 50%; background: #ddd; }
+    .mock-browser-body { padding: 24px; text-align: left; }
+    .mock-browser-body .mb-header { height: 12px; width: 40%; background: #752C86; border-radius: 4px; margin-bottom: 16px; }
+    .mock-browser-body .mb-text { height: 8px; background: #eee; border-radius: 4px; margin-bottom: 8px; }
+    .mock-browser-body .mb-text.w80 { width: 80%; }
+    .mock-browser-body .mb-text.w60 { width: 60%; }
+    .mock-browser-body .mb-text.w90 { width: 90%; }
+    .mock-browser-body .mb-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 20px; }
+    .mock-browser-body .mb-card { aspect-ratio: 1; background: #f5f5f5; border-radius: 6px; }
+
+    .case-visit {
+      text-align: center; padding: 48px 0; margin-top: 20px;
+    }
+    .case-visit p { margin: 0 auto 20px; max-width: 400px; text-align: center; }
+
+    .case-cta { padding: 80px 0; background: var(--accent); text-align: center; }
+    .case-cta h2 { color: #fff; margin-bottom: 12px; }
+    .case-cta p { color: rgba(255,255,255,0.8); margin: 0 auto 28px; max-width: 480px; text-align: center; }
+    .case-cta .btn-primary { background: #fff; color: var(--dark); box-shadow: none; }
+    .case-cta .btn-primary:hover { background: var(--dark); color: #fff; }
+
+    @media (max-width: 700px) {
+      .meta-grid { grid-template-columns: 1fr 1fr; }
+      .deliverables { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+
+  <nav id="navbar">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-mark">
+          <svg class="logo-svg" viewBox="0 0 48 48" width="40" height="40"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+          <span class="logo-text">serious<em>onions</em></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html" class="active">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html" class="nav-cta">Let's Talk</a>
+        </div>
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="label reveal">Case Study</div>
+      <h1 class="reveal">Young <em>Mobile</em></h1>
+      <p class="reveal">Brand identity and Shopify e-commerce store for a UK retailer distributing free PAYG SIM cards from Vodafone, O2, VOXI, giffgaff and EE.</p>
+    </div>
+  </section>
+
+  <section class="case-meta">
+    <div class="wrap">
+      <div class="meta-grid reveal">
+        <div class="meta-item">
+          <div class="meta-label">Client</div>
+          <div class="meta-value">Young Mobile</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Services</div>
+          <div class="meta-value">Brand, Web</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Industry</div>
+          <div class="meta-value">Telecoms / E-commerce</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Website</div>
+          <div class="meta-value"><a href="https://youngmobile.co.uk" target="_blank" style="color:var(--accent)">youngmobile.co.uk</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-content">
+    <div class="wrap">
+
+      <h2 class="reveal">The Brief</h2>
+      <p class="reveal">Young Mobile is a UK-based mobile service retailer distributing free Pay As You Go SIM cards from the major networks — Vodafone, O2, VOXI, giffgaff and EE. The product is genuinely compelling: free SIMs, no contracts, no credit checks. But without a strong brand and a well-designed store, it would get lost against the noise of network-branded competitors.</p>
+      <p class="reveal">They needed a brand identity that appealed to a young, budget-conscious audience, and an e-commerce site that made choosing and ordering a SIM card as simple and friction-free as possible. The product should practically sell itself — the site just needed to get out of the way and let it.</p>
+
+      <h2 class="reveal">The Brand</h2>
+      <p class="reveal">We built the identity around a bold purple — #752C86 — energetic, youthful, and deliberately distinctive in a market dominated by network-branded reds, blues and whites. Purple gave Young Mobile a strong, ownable colour that didn't belong to any competitor and immediately read as modern and independent.</p>
+      <p class="reveal">The identity is minimal and clean, set in the Assistant typeface — approachable and contemporary without being flashy. No-fuss branding that lets the product proposition do the talking. We delivered logo variants, colour and type specifications, and a set of brand guidelines to keep everything consistent across web and print.</p>
+
+      <div class="case-preview reveal">
+        <div class="mock-browser">
+          <div class="mock-browser-bar"><span></span><span></span><span></span></div>
+          <div class="mock-browser-body">
+            <div class="mb-header"></div>
+            <div class="mb-text w90"></div>
+            <div class="mb-text w60"></div>
+            <div class="mb-grid">
+              <div class="mb-card"></div>
+              <div class="mb-card"></div>
+              <div class="mb-card"></div>
+              <div class="mb-card"></div>
+              <div class="mb-card"></div>
+              <div class="mb-card"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="reveal">The Website</h2>
+      <p class="reveal">We built a Shopify e-commerce store with clear product grids, network filtering, and a checkout flow designed to be as quick and painless as possible. The key selling points — no contracts, no credit checks, next-day delivery — are prominent throughout, not buried in small print.</p>
+      <p class="reveal">The site is mobile-first throughout, because the target audience lives on their phones. Product cards are clean and scannable, letting customers filter by network and find exactly what they need without friction. Every page reinforces the simplicity of the offer: pick a network, add to basket, get your SIM tomorrow.</p>
+
+      <div class="case-highlight reveal">
+        <h3>The key challenge was making a SIM card feel worth choosing.</h3>
+        <p>Not just a commodity you grab from a supermarket shelf. The purple branding cuts through the noise of network-branded competitors and gives Young Mobile a distinct, memorable identity that young customers can connect with. Minimal design, maximum clarity.</p>
+      </div>
+
+      <h2 class="reveal">Supporting Materials</h2>
+      <p class="reveal">Alongside the brand and store, we produced product photography guidelines to ensure any future imagery stayed consistent with the clean, bright aesthetic. Promotional banner templates were designed for homepage hero updates and seasonal campaigns. Social media templates gave the team everything they needed to stay on-brand across Instagram and TikTok without needing a designer for every post.</p>
+
+      <div class="deliverables reveal">
+        <div class="deliverable">
+          <h4>Logo &amp; Brand Identity</h4>
+          <p>Full logo suite, colour palette, typography, brand guidelines document</p>
+        </div>
+        <div class="deliverable">
+          <h4>E-commerce Website</h4>
+          <p>Shopify store with network filtering, product grids and streamlined checkout</p>
+        </div>
+        <div class="deliverable">
+          <h4>Product Banners</h4>
+          <p>Homepage hero banners and promotional graphics for campaigns</p>
+        </div>
+        <div class="deliverable">
+          <h4>Social Templates</h4>
+          <p>Branded post templates for Instagram and TikTok</p>
+        </div>
+        <div class="deliverable">
+          <h4>Email Design</h4>
+          <p>Order confirmation and promotional email templates</p>
+        </div>
+        <div class="deliverable">
+          <h4>Brand Guidelines</h4>
+          <p>Photography guidelines, tone of voice notes and usage rules</p>
+        </div>
+      </div>
+
+      <div class="case-visit reveal">
+        <p>See the finished store for yourself:</p>
+        <a href="https://youngmobile.co.uk" target="_blank" class="btn-primary">Visit youngmobile.co.uk &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-cta">
+    <div class="wrap reveal">
+      <h2>Want the same treatment for your business?</h2>
+      <p>Whether you need a full brand build or just a website, we'd love to hear from you.</p>
+      <a href="contact.html" class="btn-primary">Start a project &rarr;</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="logo-mark">
+            <svg class="logo-svg" viewBox="0 0 48 48" width="32" height="32"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+            <span class="logo-text">serious<em>onions</em></span>
+          </div>
+          <p>Design studio, UK</p>
+        </div>
+        <div class="footer-links">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-areas"><h4>Areas We Cover</h4><div class="footer-area-links"><a href="web-design-folkestone.html">Folkestone</a><a href="web-design-hythe.html">Hythe</a><a href="web-design-dover.html">Dover</a><a href="web-design-canterbury.html">Canterbury</a><a href="web-design-ashford.html">Ashford</a><a href="web-design-lyminge.html">Lyminge</a><a href="web-design-dymchurch.html">Dymchurch</a><a href="graphic-design-folkestone.html">Graphic Design Folkestone</a><a href="graphic-design-canterbury.html">Graphic Design Canterbury</a><a href="vinyl-graphics-folkestone.html">Vinyl Graphics Folkestone</a><a href="vinyl-graphics-ashford.html">Vinyl Graphics Ashford</a><a href="graphic-design-romney-marsh.html">Romney Marsh</a></div></div>
+      <div class="footer-copy">&copy; 2026 Serious Onions</div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('menuBtn').classList.toggle('active');
+    }
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    const cursor = document.getElementById('cursor');
+    let cx=0,cy=0,mx=0,my=0;
+    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+    (function loop(){cx+=(mx-cx)*0.15;cy+=(my-cy)*0.15;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(loop);})();
+    document.querySelectorAll('a, button, .deliverable').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+    });
+  </script>
+
+</body>
+</html>

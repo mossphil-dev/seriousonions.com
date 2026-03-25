@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Serious Onions</title>
+  <meta name="description" content="Get in touch with Serious Onions design studio. We reply the same day.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero { padding: 160px 0 60px; }
+    .page-hero .label { margin-bottom: 12px; }
+    .page-hero h1 { font-family: var(--display); font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: var(--dark); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 16px; }
+    .page-hero h1 em { font-style: italic; color: var(--accent); }
+    .page-hero p { font-size: 17px; color: var(--muted); max-width: 520px; line-height: 1.7; }
+
+    .contact-section { padding: 0 0 120px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    .contact-info h3 {
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--muted); margin-top: 28px; margin-bottom: 8px;
+    }
+    .contact-info h3:first-child { margin-top: 0; }
+    .contact-info .contact-link {
+      font-size: 18px; font-weight: 600; color: var(--dark);
+      border-bottom: 1.5px solid var(--border); padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s; display: inline-block;
+    }
+    .contact-info .contact-link:hover { color: var(--accent); border-color: var(--accent); }
+    .contact-info p { font-size: 15px; color: var(--text); line-height: 1.7; }
+
+    .contact-form { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px; }
+    .contact-form label {
+      display: block; font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.5px; color: var(--muted); margin-bottom: 6px; margin-top: 20px;
+    }
+    .contact-form label:first-child { margin-top: 0; }
+    .contact-form input, .contact-form textarea, .contact-form select {
+      width: 100%; padding: 14px 16px; border: 1.5px solid var(--border);
+      border-radius: var(--radius); font-size: 14px; font-family: var(--sans);
+      color: var(--dark); background: var(--bg); transition: border-color 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+      outline: none; border-color: var(--accent);
+    }
+    .contact-form textarea { resize: vertical; min-height: 130px; }
+    .contact-form .submit-btn {
+      margin-top: 24px; width: 100%; padding: 16px; border: none;
+      border-radius: 100px; cursor: pointer; font-size: 14px; font-weight: 600;
+      font-family: var(--sans); background: var(--accent); color: #fff;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 4px 16px rgba(255,87,34,0.25);
+    }
+    .contact-form .submit-btn:hover { background: var(--accent2); transform: translateY(-2px); }
+    .form-note { margin-top: 12px; font-size: 12px; color: var(--muted); text-align: center; }
+
+    @media (max-width: 800px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .contact-form { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+
+  <nav id="navbar">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-mark">
+          <svg class="logo-svg" viewBox="0 0 48 48" width="40" height="40"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+          <span class="logo-text">serious<em>onions</em></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html" class="nav-cta">Let's Talk</a>
+        </div>
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="label reveal">Get in Touch</div>
+      <h1 class="reveal">Let's make <em>something.</em></h1>
+      <p class="reveal">Tell us what you need. We'll get back to you the same day — usually within a couple of hours.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="wrap">
+      <div class="contact-grid">
+
+        <div class="contact-info reveal">
+          <h3>Email</h3>
+          <a href="mailto:hello@seriousonions.com" class="contact-link">hello@seriousonions.com</a>
+
+          <h3>Phone</h3>
+          <a href="tel:+441234567890" class="contact-link">01234 567 890</a>
+
+          <h3>Based</h3>
+          <p>United Kingdom</p>
+
+          <h3>Hours</h3>
+          <p>Mon–Fri, 9am–5pm<br>Weekends by arrangement</p>
+
+          <h3>Areas we cover</h3>
+          <p>We work with clients across the UK. Many are in Kent — <a href="web-design-folkestone.html" style="color:var(--accent)">Folkestone</a>, <a href="web-design-ashford.html" style="color:var(--accent)">Ashford</a>, <a href="web-design-canterbury.html" style="color:var(--accent)">Canterbury</a>, <a href="web-design-dover.html" style="color:var(--accent)">Dover</a> and beyond.</p>
+        </div>
+
+        <form class="contact-form reveal" onsubmit="event.preventDefault(); this.querySelector('.submit-btn').textContent='Sent!'; this.querySelector('.submit-btn').style.background='#28a745';">
+          <label>Your name</label>
+          <input type="text" name="name" placeholder="e.g. James Wilson" required>
+
+          <label>Email</label>
+          <input type="email" name="email" placeholder="e.g. james@email.com" required>
+
+          <label>What do you need?</label>
+          <select name="service">
+            <option value="">Pick one (or don't)</option>
+            <option>Website</option>
+            <option>Graphic design / branding</option>
+            <option>Vinyl graphics</option>
+            <option>A bit of everything</option>
+            <option>Not sure yet</option>
+          </select>
+
+          <label>Tell us about your project</label>
+          <textarea name="message" placeholder="What are you after? Any deadlines? Rough budget? The more detail, the quicker we can come back with something useful."></textarea>
+
+          <button type="submit" class="submit-btn">Send message &rarr;</button>
+          <p class="form-note">We don't share your details with anyone. Ever.</p>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="logo-mark">
+            <svg class="logo-svg" viewBox="0 0 48 48" width="32" height="32"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+            <span class="logo-text">serious<em>onions</em></span>
+          </div>
+          <p>Design studio, UK</p>
+        </div>
+        <div class="footer-links">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-areas"><h4>Areas We Cover</h4><div class="footer-area-links"><a href="web-design-folkestone.html">Folkestone</a><a href="web-design-hythe.html">Hythe</a><a href="web-design-dover.html">Dover</a><a href="web-design-canterbury.html">Canterbury</a><a href="web-design-ashford.html">Ashford</a><a href="web-design-lyminge.html">Lyminge</a><a href="web-design-dymchurch.html">Dymchurch</a><a href="graphic-design-folkestone.html">Graphic Design Folkestone</a><a href="graphic-design-canterbury.html">Graphic Design Canterbury</a><a href="vinyl-graphics-folkestone.html">Vinyl Graphics Folkestone</a><a href="vinyl-graphics-ashford.html">Vinyl Graphics Ashford</a><a href="graphic-design-romney-marsh.html">Romney Marsh</a></div></div>
+      <div class="footer-copy">&copy; 2026 Serious Onions</div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('menuBtn').classList.toggle('active');
+    }
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    const cursor = document.getElementById('cursor');
+    let cx=0,cy=0,mx=0,my=0;
+    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+    (function loop(){cx+=(mx-cx)*0.15;cy+=(my-cy)*0.15;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(loop);})();
+    document.querySelectorAll('a, button, input, textarea, select').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+    });
+  </script>
+
+</body>
+</html>

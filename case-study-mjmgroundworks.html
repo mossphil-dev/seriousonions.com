@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: MJM Groundworks — Serious Onions</title>
+  <meta name="description" content="Website rebuild for MJM Groundworks LTD — a groundwork contractor in Middlesex covering Surrey, Hertfordshire and Berkshire.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero { padding: 160px 0 60px; }
+    .page-hero .label { margin-bottom: 12px; }
+    .page-hero h1 { font-family: var(--display); font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: var(--dark); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 16px; }
+    .page-hero h1 em { font-style: italic; color: var(--accent); }
+    .page-hero p { font-size: 17px; color: var(--muted); max-width: 520px; line-height: 1.7; }
+
+    .case-meta { padding: 0 0 60px; }
+    .meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .meta-item { padding: 24px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); }
+    .meta-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 6px; }
+    .meta-value { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--dark); }
+
+    .case-content { padding: 0 0 80px; }
+    .case-content h2 { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--dark); margin-bottom: 16px; margin-top: 56px; letter-spacing: -0.5px; }
+    .case-content h2:first-child { margin-top: 0; }
+    .case-content p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; max-width: 720px; }
+
+    .case-highlight {
+      padding: 48px; background: var(--dark); color: #fff; border-radius: var(--radius);
+      margin: 40px 0;
+    }
+    .case-highlight h3 { font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
+    .case-highlight p { color: #ccc; max-width: none; }
+
+    .deliverables { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 32px 0; }
+    .deliverable {
+      padding: 24px; background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); transition: border-color 0.2s, transform 0.3s;
+    }
+    .deliverable:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .deliverable h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .deliverable p { font-size: 13px; margin-bottom: 0; }
+
+    .case-preview {
+      margin: 40px 0; border-radius: var(--radius); overflow: hidden;
+      background: linear-gradient(135deg, #2c2c2c, #3e3e3e);
+      padding: 48px; text-align: center;
+    }
+    .case-preview .mock-browser {
+      max-width: 600px; margin: 0 auto; background: #fff; border-radius: 8px;
+      overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+    }
+    .mock-browser-bar { background: #f0f0f0; padding: 10px 14px; display: flex; gap: 6px; }
+    .mock-browser-bar span { width: 10px; height: 10px; border-radius: 50%; background: #ddd; }
+    .mock-browser-body { padding: 24px; text-align: left; }
+    .mock-browser-body .mb-header { height: 12px; width: 40%; background: #f5b41c; border-radius: 4px; margin-bottom: 16px; }
+    .mock-browser-body .mb-text { height: 8px; background: #eee; border-radius: 4px; margin-bottom: 8px; }
+    .mock-browser-body .mb-text.w80 { width: 80%; }
+    .mock-browser-body .mb-text.w60 { width: 60%; }
+    .mock-browser-body .mb-text.w90 { width: 90%; }
+    .mock-browser-body .mb-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 20px; }
+    .mock-browser-body .mb-card { aspect-ratio: 1; background: #f5f5f5; border-radius: 6px; }
+
+    .case-visit {
+      text-align: center; padding: 48px 0; margin-top: 20px;
+    }
+    .case-visit p { margin: 0 auto 20px; max-width: 400px; text-align: center; }
+
+    .case-cta { padding: 80px 0; background: var(--accent); text-align: center; }
+    .case-cta h2 { color: #fff; margin-bottom: 12px; }
+    .case-cta p { color: rgba(255,255,255,0.8); margin: 0 auto 28px; max-width: 480px; text-align: center; }
+    .case-cta .btn-primary { background: #fff; color: var(--dark); box-shadow: none; }
+    .case-cta .btn-primary:hover { background: var(--dark); color: #fff; }
+
+    @media (max-width: 700px) {
+      .meta-grid { grid-template-columns: 1fr 1fr; }
+      .deliverables { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+
+  <nav id="navbar">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-mark">
+          <svg class="logo-svg" viewBox="0 0 48 48" width="40" height="40"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+          <span class="logo-text">serious<em>onions</em></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html" class="active">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html" class="nav-cta">Let's Talk</a>
+        </div>
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="label reveal">Case Study</div>
+      <h1 class="reveal">MJM <em>Groundworks</em></h1>
+      <p class="reveal">Complete website rebuild for a long-established family-run groundwork contractor in Middlesex — faster, mobile-friendly and built to generate enquiries.</p>
+    </div>
+  </section>
+
+  <section class="case-meta">
+    <div class="wrap">
+      <div class="meta-grid reveal">
+        <div class="meta-item">
+          <div class="meta-label">Client</div>
+          <div class="meta-value">MJM Groundworks LTD</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Services</div>
+          <div class="meta-value">Web Design</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Industry</div>
+          <div class="meta-value">Construction / Trades</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Website</div>
+          <div class="meta-value"><a href="https://mjmgroundworksltd.co.uk" target="_blank" style="color:var(--accent)">mjmgroundworksltd.co.uk</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-content">
+    <div class="wrap">
+
+      <h2 class="reveal">The Brief</h2>
+      <p class="reveal">MJM Groundworks is a long-established family-run groundwork contractor based in Middlesex, covering Surrey, Hertfordshire and Berkshire. With over 20 years in the industry they had plenty to shout about — but their website wasn't doing the job. It was built on WordPress, years out of date, painfully slow and unusable on mobile. Most of their customers were finding competitors instead.</p>
+      <p class="reveal">They needed a modern rebuild that reflected their experience and reputation, performed well in local search, and turned visitors into enquiries. No fluff — just a fast, professional site that gave customers confidence and made it easy to get in touch.</p>
+
+      <div class="case-preview reveal">
+        <div class="mock-browser">
+          <div class="mock-browser-bar"><span></span><span></span><span></span></div>
+          <div class="mock-browser-body">
+            <div class="mb-header"></div>
+            <div class="mb-text w90"></div>
+            <div class="mb-text w60"></div>
+            <div class="mb-grid">
+              <div class="mb-card"></div>
+              <div class="mb-card"></div>
+              <div class="mb-card"></div>
+              <div class="mb-card"></div>
+              <div class="mb-card"></div>
+              <div class="mb-card"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="reveal">The Website</h2>
+      <p class="reveal">We rebuilt the site from the ground up — scrapping WordPress entirely in favour of clean, fast-loading static HTML. The result is a site that loads in under 2 seconds with no database queries, no plugin overhead, and nothing slowing it down.</p>
+      <p class="reveal">The design leads with a dark hero section and parallax scrolling to give the site weight and presence. Animated counters — 20+ years in business, 500+ projects completed — build credibility immediately. Service cards with image hover effects, a project gallery, and a testimonials section round out the picture of an experienced, trusted contractor.</p>
+      <p class="reveal">A floating call-to-action button stays visible as users scroll, making it effortless to call or enquire at any point. The contact form is simple and prominently placed. Click-to-call buttons are on every page — because on mobile, a tap should dial, not copy a number.</p>
+
+      <div class="case-highlight reveal">
+        <h3>8 seconds to under 2 seconds. The phone started ringing within a week.</h3>
+        <p>The old WordPress site took 8 seconds to load and didn't work on mobile. The new site loads in under 2 seconds, ranks for local search terms, and the phone started ringing within a week of launch. No WordPress bloat, no plugin updates to manage, no security vulnerabilities to patch — just a fast, reliable site that works.</p>
+      </div>
+
+      <h2 class="reveal">Local SEO &amp; Service Pages</h2>
+      <p class="reveal">A key part of the brief was visibility in local search. We built dedicated service pages for every major offering — foundations, excavation, drainage, concrete bases, fencing, landscaping, digger hire, driveways and demolition — each structured and written for the search terms customers actually use.</p>
+      <p class="reveal">Coverage area pages for Middlesex, Surrey, Hertfordshire and Berkshire ensure the site ranks for location-specific searches across the whole territory. Every page follows Google-friendly structure: clear headings, descriptive meta titles and descriptions, fast load times and proper internal linking throughout.</p>
+
+      <div class="deliverables reveal">
+        <div class="deliverable">
+          <h4>Website Rebuild</h4>
+          <p>Full rebuild from WordPress to static HTML — dark hero, parallax, animated counters, gallery, testimonials</p>
+        </div>
+        <div class="deliverable">
+          <h4>9 Service Pages</h4>
+          <p>Dedicated pages for foundations, excavation, drainage, concrete, fencing, landscaping, digger hire, driveways and demolition</p>
+        </div>
+        <div class="deliverable">
+          <h4>SEO Optimisation</h4>
+          <p>Local SEO structure, coverage area pages, meta data and Google-friendly page architecture throughout</p>
+        </div>
+        <div class="deliverable">
+          <h4>Contact Forms &amp; CTAs</h4>
+          <p>Enquiry forms, click-to-call buttons and floating CTA to maximise lead generation</p>
+        </div>
+      </div>
+
+      <div class="case-visit reveal">
+        <p>See the finished site for yourself:</p>
+        <a href="https://mjmgroundworksltd.co.uk" target="_blank" class="btn-primary">Visit mjmgroundworksltd.co.uk &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-cta">
+    <div class="wrap reveal">
+      <h2>Want the same treatment for your business?</h2>
+      <p>Whether you need a full brand build or just a website, we'd love to hear from you.</p>
+      <a href="contact.html" class="btn-primary">Start a project &rarr;</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="logo-mark">
+            <svg class="logo-svg" viewBox="0 0 48 48" width="32" height="32"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+            <span class="logo-text">serious<em>onions</em></span>
+          </div>
+          <p>Design studio, UK</p>
+        </div>
+        <div class="footer-links">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-areas"><h4>Areas We Cover</h4><div class="footer-area-links"><a href="web-design-folkestone.html">Folkestone</a><a href="web-design-hythe.html">Hythe</a><a href="web-design-dover.html">Dover</a><a href="web-design-canterbury.html">Canterbury</a><a href="web-design-ashford.html">Ashford</a><a href="web-design-lyminge.html">Lyminge</a><a href="web-design-dymchurch.html">Dymchurch</a><a href="graphic-design-folkestone.html">Graphic Design Folkestone</a><a href="graphic-design-canterbury.html">Graphic Design Canterbury</a><a href="vinyl-graphics-folkestone.html">Vinyl Graphics Folkestone</a><a href="vinyl-graphics-ashford.html">Vinyl Graphics Ashford</a><a href="graphic-design-romney-marsh.html">Romney Marsh</a></div></div>
+      <div class="footer-copy">&copy; 2026 Serious Onions</div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('menuBtn').classList.toggle('active');
+    }
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    const cursor = document.getElementById('cursor');
+    let cx=0,cy=0,mx=0,my=0;
+    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+    (function loop(){cx+=(mx-cx)*0.15;cy+=(my-cy)*0.15;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(loop);})();
+    document.querySelectorAll('a, button, .deliverable').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+    });
+  </script>
+
+</body>
+</html>

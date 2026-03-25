@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Login — Serious Onions</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { min-height: 100vh; display: flex; flex-direction: column; }
+    .login-wrap {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      padding: 120px 24px 80px;
+    }
+    .login-card {
+      width: 100%; max-width: 420px; background: var(--white);
+      border: 1px solid var(--border); border-radius: 16px;
+      padding: 48px 40px; text-align: center;
+    }
+    .login-card .logo-mark { justify-content: center; margin-bottom: 32px; }
+    .login-card h1 {
+      font-family: var(--display); font-size: 24px; font-weight: 700;
+      color: var(--dark); margin-bottom: 8px;
+    }
+    .login-card .sub { font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+    .login-field { margin-bottom: 16px; text-align: left; }
+    .login-field label {
+      display: block; font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.5px; color: var(--muted); margin-bottom: 6px;
+    }
+    .login-field input {
+      width: 100%; padding: 14px 16px; border: 1.5px solid var(--border);
+      border-radius: var(--radius); font-size: 14px; font-family: var(--sans);
+      color: var(--dark); background: var(--bg); transition: border-color 0.2s;
+    }
+    .login-field input:focus { outline: none; border-color: var(--accent); }
+    .login-btn {
+      width: 100%; padding: 16px; border: none; border-radius: 100px;
+      background: var(--accent); color: #fff; font-size: 14px; font-weight: 600;
+      font-family: var(--sans); cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 4px 16px rgba(255,87,34,0.25);
+      margin-top: 8px;
+    }
+    .login-btn:hover { background: var(--accent2); transform: translateY(-2px); }
+    .login-error {
+      display: none; margin-top: 16px; padding: 12px; border-radius: var(--radius);
+      background: #fff0f0; color: #c00; font-size: 13px; font-weight: 500;
+    }
+    .login-error.show { display: block; }
+    .login-footer { margin-top: 24px; font-size: 12px; color: var(--muted); }
+    .login-footer a { color: var(--accent); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar" class="scrolled">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-mark">
+          <svg class="logo-svg" viewBox="0 0 48 48" width="40" height="40"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+          <span class="logo-text">serious<em>onions</em></span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="logo-mark">
+        <svg class="logo-svg" viewBox="0 0 48 48" width="48" height="48"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+      </div>
+      <h1>Client Portal</h1>
+      <p class="sub">Log in to view your project concepts.</p>
+      <form onsubmit="return handleLogin(event)">
+        <div class="login-field">
+          <label>Username</label>
+          <input type="text" id="username" placeholder="Your username" required autofocus>
+        </div>
+        <div class="login-field">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="Your password" required>
+        </div>
+        <button type="submit" class="login-btn">Log in &rarr;</button>
+      </form>
+      <div class="login-error" id="loginError">Incorrect username or password. Please try again.</div>
+      <div class="login-footer">Not a client? <a href="contact.html">Get in touch</a></div>
+    </div>
+  </div>
+
+  <script>
+    // Client credentials — add new clients here
+    const clients = {
+      'mjm': { password: 'mjm2026', redirect: 'client/mjm.html', name: 'MJM Groundworks' },
+      'majicbreaks': { password: 'majic2026', redirect: 'client/majicbreaks.html', name: 'Majic Breaks' },
+    };
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById('username').value.toLowerCase().trim();
+      const pass = document.getElementById('password').value;
+      const err = document.getElementById('loginError');
+
+      if (clients[user] && clients[user].password === pass) {
+        sessionStorage.setItem('so_client', user);
+        sessionStorage.setItem('so_name', clients[user].name);
+        window.location.href = clients[user].redirect;
+      } else {
+        err.classList.add('show');
+        document.getElementById('password').value = '';
+        setTimeout(() => err.classList.remove('show'), 3000);
+      }
+      return false;
+    }
+  </script>
+
+</body>
+</html>

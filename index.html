@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serious Onions — Design Studio</title>
+  <meta name="description" content="Web design, graphic design and vinyl graphics studio. We make brands look seriously good.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── PAGE LOADER ── */
+    .loader {
+      position: fixed; inset: 0; background: var(--dark); z-index: 99999;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.5s, visibility 0.5s;
+    }
+    .loader.done { opacity: 0; visibility: hidden; }
+    .loader-logo { color: var(--accent); animation: pulse 1s ease infinite alternate; }
+    @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+
+    /* ── HERO UPGRADE ── */
+    .hero { padding: 0; min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+    .hero::before {
+      content: ''; position: absolute; top: -50%; right: -20%; width: 800px; height: 800px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(255,87,34,0.07) 0%, transparent 70%);
+      pointer-events: none; animation: float 8s ease-in-out infinite;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -30%; left: -10%; width: 600px; height: 600px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(255,87,34,0.04) 0%, transparent 70%);
+      pointer-events: none; animation: float 10s ease-in-out infinite reverse;
+    }
+    @keyframes float { 0%,100% { transform: translate(0,0); } 50% { transform: translate(30px,-30px); } }
+    .hero .wrap { position: relative; z-index: 1; padding-top: 120px; padding-bottom: 80px; }
+
+    .hero-title em {
+      background: linear-gradient(135deg, var(--accent), #ff9800);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; font-style: italic;
+    }
+
+    /* ── GRID BACKGROUND ── */
+    .grid-bg {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
+    }
+
+    /* ── FLOATING SHAPES ── */
+    .shape {
+      position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
+    }
+    .shape-1 {
+      width: 12px; height: 12px; background: var(--accent); top: 30%; right: 15%;
+      animation: bob 4s ease-in-out infinite;
+    }
+    .shape-2 {
+      width: 8px; height: 8px; background: var(--dark); top: 60%; right: 30%;
+      animation: bob 5s ease-in-out infinite 1s;
+    }
+    .shape-3 {
+      width: 16px; height: 16px; border: 2px solid var(--accent); top: 45%; right: 8%;
+      animation: bob 6s ease-in-out infinite 0.5s;
+    }
+    @keyframes bob { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(180deg); } }
+
+    /* ── SERVICE CARDS LINK ── */
+    .svc-item { cursor: pointer; }
+    .svc-item .svc-arrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 600; color: var(--accent);
+      margin-top: 4px; transition: gap 0.3s;
+    }
+    .svc-item:hover .svc-arrow { gap: 12px; }
+
+    /* ── PROCESS STRIP ── */
+    .process { padding: 100px 0; border-top: 1px solid var(--border); }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 48px; }
+    .process-step {
+      padding: 32px; border-right: 1px solid var(--border); position: relative;
+    }
+    .process-step:last-child { border-right: none; }
+    .process-num {
+      font-family: var(--display); font-size: 56px; font-weight: 800;
+      color: rgba(0,0,0,0.04); line-height: 1; margin-bottom: 16px;
+    }
+    .process-step h4 { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .process-step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── WORK SECTION LINK ── */
+    .work-cta { text-align: center; margin-top: 40px; }
+
+    /* ── SMOOTH SCROLL INDICATOR ── */
+    .scroll-hint {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--muted); z-index: 2;
+    }
+    .scroll-line {
+      width: 1px; height: 40px; background: var(--border); position: relative; overflow: hidden;
+    }
+    .scroll-line::after {
+      content: ''; position: absolute; top: -40px; left: 0; width: 1px; height: 40px;
+      background: var(--accent); animation: scrollDown 2s ease-in-out infinite;
+    }
+    @keyframes scrollDown { 0% { top: -40px; } 100% { top: 40px; } }
+
+    @media (max-width: 900px) {
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .process-step { border-bottom: 1px solid var(--border); }
+      .process-step:nth-child(2) { border-right: none; }
+      .shape { display: none; }
+    }
+    @media (max-width: 500px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .process-step { border-right: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <svg class="loader-logo" viewBox="0 0 48 48" width="64" height="64">
+      <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="24" cy="24" r="6" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-mark">
+          <svg class="logo-svg" viewBox="0 0 48 48" width="40" height="40">
+            <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="24" cy="24" r="6" fill="currentColor"/>
+          </svg>
+          <span class="logo-text">serious<em>onions</em></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html" class="nav-cta">Let's Talk</a>
+        </div>
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="grid-bg"></div>
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="wrap">
+      <div class="hero-inner">
+        <div class="hero-eyebrow reveal">Design Studio — UK</div>
+        <h1 class="hero-title">
+          <span class="reveal-line"><span>We design brands</span></span>
+          <span class="reveal-line"><span>that people</span></span>
+          <span class="reveal-line"><span>actually <em>remember.</em></span></span>
+        </h1>
+        <p class="hero-sub reveal">Websites, logos, branding, stationery and vinyl graphics — for businesses that refuse to look ordinary.</p>
+        <div class="hero-actions reveal">
+          <a href="contact.html" class="btn-primary">Start a project &rarr;</a>
+          <a href="work.html" class="btn-ghost">See our work</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal-scale">
+        <div class="hero-card card-1">
+          <div class="card-tag">Web</div>
+          <div class="card-mockup">
+            <div class="mock-bar"><span></span><span></span><span></span></div>
+            <div class="mock-body">
+              <div class="mock-block w60"></div>
+              <div class="mock-block w40"></div>
+              <div class="mock-row"><div class="mock-block sq"></div><div class="mock-block sq"></div><div class="mock-block sq"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card card-2">
+          <div class="card-tag">Brand</div>
+          <div class="card-circle-stack">
+            <div class="cc c1"></div>
+            <div class="cc c2"></div>
+            <div class="cc c3"></div>
+          </div>
+        </div>
+        <div class="hero-card card-3">
+          <div class="card-tag">Vinyl</div>
+          <div class="card-van">
+            <div class="van-body"></div>
+            <div class="van-wrap"></div>
+            <div class="van-wheel w1"></div>
+            <div class="van-wheel w2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>Websites</span><span>Logos</span><span>Branding</span><span>Stationery</span>
+      <span>Van Wraps</span><span>Shop Signage</span><span>Window Graphics</span><span>Social Media</span>
+      <span>Websites</span><span>Logos</span><span>Branding</span><span>Stationery</span>
+      <span>Van Wraps</span><span>Shop Signage</span><span>Window Graphics</span><span>Social Media</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-intro reveal">
+        <div class="label">What we do</div>
+        <h2>Three things.<br>Done properly.</h2>
+      </div>
+      <div class="svc-grid">
+        <a href="web-design.html" class="svc-item reveal" style="text-decoration:none">
+          <div class="svc-number">01</div>
+          <div class="svc-icon">
+            <svg viewBox="0 0 48 48" width="48" height="48"><rect x="4" y="8" width="40" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="4" y1="14" x2="44" y2="14" stroke="currentColor" stroke-width="2"/><circle cx="8" cy="11" r="1.5" fill="currentColor"/><circle cx="13" cy="11" r="1.5" fill="currentColor"/><line x1="16" y1="42" x2="32" y2="42" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="24" y1="36" x2="24" y2="42" stroke="currentColor" stroke-width="2.5"/></svg>
+          </div>
+          <h3>Web Design</h3>
+          <p>Fast, responsive sites that actually get enquiries. Not template rubbish — proper builds designed around your customers.</p>
+          <ul class="svc-tags">
+            <li>Responsive</li><li>E-commerce</li><li>SEO</li><li>CMS</li>
+          </ul>
+          <div class="svc-arrow">Learn more &rarr;</div>
+        </a>
+        <a href="graphic-design.html" class="svc-item reveal" style="text-decoration:none">
+          <div class="svc-number">02</div>
+          <div class="svc-icon">
+            <svg viewBox="0 0 48 48" width="48" height="48"><path d="M24 4L4 14v20l20 10 20-10V14L24 4z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><line x1="24" y1="24" x2="24" y2="44" stroke="currentColor" stroke-width="2"/><line x1="4" y1="14" x2="24" y2="24" stroke="currentColor" stroke-width="2"/><line x1="44" y1="14" x2="24" y2="24" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3>Graphic Design</h3>
+          <p>Logos, brand identities, stationery and guidelines. Full brand packages that keep everything consistent wherever you show up.</p>
+          <ul class="svc-tags">
+            <li>Logos</li><li>Branding</li><li>Stationery</li><li>Guidelines</li>
+          </ul>
+          <div class="svc-arrow">Learn more &rarr;</div>
+        </a>
+        <a href="vinyl-graphics.html" class="svc-item reveal" style="text-decoration:none">
+          <div class="svc-number">03</div>
+          <div class="svc-icon">
+            <svg viewBox="0 0 48 48" width="48" height="48"><rect x="2" y="16" width="36" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/><rect x="38" y="12" width="8" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="12" cy="38" r="4" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="30" cy="38" r="4" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
+          </div>
+          <h3>Vinyl Graphics</h3>
+          <p>Van wraps, shop fronts, window graphics and signage. Your van does thousands of miles — make every one count.</p>
+          <ul class="svc-tags">
+            <li>Van Wraps</li><li>Shop Fronts</li><li>Windows</li><li>Signage</li>
+          </ul>
+          <div class="svc-arrow">Learn more &rarr;</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="wrap">
+      <div class="section-intro reveal">
+        <div class="label">How it works</div>
+        <h2>No faff. No jargon.</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-step reveal">
+          <div class="process-num">01</div>
+          <h4>Chat</h4>
+          <p>You tell us what you need. We listen, ask the right questions, and give you a clear quote the same day.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-num">02</div>
+          <h4>Design</h4>
+          <p>We go away and design it. You get concepts to review. You give feedback, we refine. Simple.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-num">03</div>
+          <h4>Build</h4>
+          <p>Once you're happy, we build it — whether that's code, print files, or vinyl-ready artwork.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-num">04</div>
+          <h4>Launch</h4>
+          <p>We deliver everything, make sure it's right, and hand over all the files you'll ever need.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <div class="wrap">
+      <div class="section-intro reveal">
+        <div class="label">Selected work</div>
+        <h2>Things we've made recently.</h2>
+      </div>
+      <div class="work-grid">
+        <a href="case-study-thevinylbiz.html" class="work-card wide reveal">
+          <div class="work-card-bg" style="background:linear-gradient(135deg,#0a6b5c,#108474)">
+            <div class="work-card-inner">
+              <div class="mock-bar light"><span></span><span></span><span></span></div>
+              <div class="mock-body light"><div class="mock-block w70"></div><div class="mock-block w50"></div><div class="mock-row"><div class="mock-block sq"></div><div class="mock-block sq"></div><div class="mock-block sq"></div></div></div>
+            </div>
+          </div>
+          <div class="work-info"><h3>The Vinyl Biz</h3><p>Logo, brand, e-commerce &amp; print &mdash; View case study</p></div>
+        </a>
+        <a href="case-study-youngmobile.html" class="work-card reveal">
+          <div class="work-card-bg" style="background:linear-gradient(135deg,#2d132c,#4a1942)">
+            <div class="work-card-inner"><div class="van-mock"><div class="vm-body"></div><div class="vm-stripe"></div></div></div>
+          </div>
+          <div class="work-info"><h3>Young Mobile</h3><p>Brand &amp; e-commerce &mdash; View case study</p></div>
+        </a>
+        <a href="case-study-shootsuite.html" class="work-card reveal">
+          <div class="work-card-bg" style="background:linear-gradient(135deg,#0f3460,#16213e)">
+            <div class="work-card-inner"><div class="brand-mock"><div class="bm-circle accent"></div><div class="bm-lines"><div></div><div></div></div></div></div>
+          </div>
+          <div class="work-info"><h3>ShootSuite</h3><p>Brand, website &amp; pitch deck &mdash; View case study</p></div>
+        </a>
+        <a href="case-study-mjmgroundworks.html" class="work-card reveal">
+          <div class="work-card-bg" style="background:linear-gradient(135deg,#383028,#2a221a)">
+            <div class="work-card-inner">
+              <div class="mock-bar light"><span></span><span></span><span></span></div>
+              <div class="mock-body light"><div class="mock-block w60"></div><div class="mock-block w40"></div></div>
+            </div>
+          </div>
+          <div class="work-info"><h3>MJM Groundworks</h3><p>Website rebuild &amp; SEO &mdash; View case study</p></div>
+        </a>
+      </div>
+      <div class="work-cta reveal">
+        <a href="work.html" class="btn-ghost" style="color:#fff;border-color:rgba(255,255,255,0.3)">View all projects &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT STRIP -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="label">About</div>
+          <h2>Small studio.<br>Big standards.</h2>
+          <p>We started Serious Onions because we were tired of seeing small businesses pay agency prices for template work. Logos that look like clip art. Websites that take six months and still don't work on a phone.</p>
+          <p>We keep it lean. You talk to the person doing the work. No account managers, no project boards. Just good design, fair prices and stuff delivered when we said it would be.</p>
+          <a href="about.html" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:var(--accent);margin-top:8px">Read more about us &rarr;</a>
+        </div>
+        <div class="about-stats reveal">
+          <div class="stat">
+            <div class="stat-num" data-target="12">0</div>
+            <div class="stat-label">Years running</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" data-target="200">0</div>
+            <div class="stat-label">Projects done</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" data-target="48">0</div>
+            <div class="stat-label">Hour avg turnaround</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" data-target="0">0</div>
+            <div class="stat-label">Templates used</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="reviews">
+    <div class="wrap">
+      <div class="section-intro reveal">
+        <div class="label">Kind words</div>
+        <h2>Don't take our word for it.</h2>
+      </div>
+      <div class="review-grid">
+        <div class="review-card reveal">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Sorted our website, van graphics and business cards in a week. Dead easy to deal with and the quality was spot on."</p>
+          <cite>James W. — JW Plumbing</cite>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"No messing about. Got a quote the same day, and the finished wrap looked exactly like the mockup."</p>
+          <cite>Dave P. — Apex Electrical</cite>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"They actually listened instead of trying to upsell us stuff we didn't need. Refreshing."</p>
+          <cite>Sarah M. — Millbrook Kitchens</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <div class="cta-inner reveal">
+        <h2>Got something that<br>needs designing?</h2>
+        <p>Tell us what you need. We'll get back to you the same day.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn-primary">Start a project &rarr;</a>
+          <a href="mailto:hello@seriousonions.com" class="btn-ghost">hello@seriousonions.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="logo-mark">
+            <svg class="logo-svg" viewBox="0 0 48 48" width="32" height="32"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+            <span class="logo-text">serious<em>onions</em></span>
+          </div>
+          <p>Design studio, UK</p>
+        </div>
+        <div class="footer-links">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-areas"><h4>Areas We Cover</h4><div class="footer-area-links"><a href="web-design-folkestone.html">Folkestone</a><a href="web-design-hythe.html">Hythe</a><a href="web-design-dover.html">Dover</a><a href="web-design-canterbury.html">Canterbury</a><a href="web-design-ashford.html">Ashford</a><a href="web-design-lyminge.html">Lyminge</a><a href="web-design-dymchurch.html">Dymchurch</a><a href="graphic-design-folkestone.html">Graphic Design Folkestone</a><a href="graphic-design-canterbury.html">Graphic Design Canterbury</a><a href="vinyl-graphics-folkestone.html">Vinyl Graphics Folkestone</a><a href="vinyl-graphics-ashford.html">Vinyl Graphics Ashford</a><a href="graphic-design-romney-marsh.html">Romney Marsh</a></div></div>
+      <div class="footer-copy">&copy; 2026 Serious Onions</div>
+    </div>
+  </footer>
+
+  <script>
+    // Page loader
+    window.addEventListener('load', () => {
+      setTimeout(() => document.getElementById('loader').classList.add('done'), 600);
+    });
+
+    // Menu
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('menuBtn').classList.toggle('active');
+    }
+
+    // Nav background on scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Scroll reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-scale').forEach(el => obs.observe(el));
+
+    // Hero text reveal
+    document.querySelectorAll('.reveal-line span').forEach((span, i) => {
+      setTimeout(() => span.style.transform = 'translateY(0)', 800 + i * 180);
+    });
+
+    // Counter
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('[data-target]').forEach(n => {
+            const target = +n.dataset.target;
+            let current = 0;
+            const step = Math.max(1, Math.ceil(target / 30));
+            const timer = setInterval(() => {
+              current += step;
+              if (current >= target) { current = target; clearInterval(timer); }
+              n.textContent = current + (target > 0 ? '+' : '');
+            }, 40);
+          });
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.about-stats').forEach(c => counterObs.observe(c));
+
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    let cx = 0, cy = 0, mx = 0, my = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function loop() {
+      cx += (mx - cx) * 0.15; cy += (my - cy) * 0.15;
+      cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px';
+      requestAnimationFrame(loop);
+    })();
+    document.querySelectorAll('a, button, .work-card, .svc-item').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+    });
+
+    // Parallax hero cards on mouse move
+    const heroVisual = document.querySelector('.hero-visual');
+    if (heroVisual) {
+      document.addEventListener('mousemove', e => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 20;
+        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+        document.querySelector('.card-1').style.transform = `rotate(-2deg) translate(${x*0.5}px, ${y*0.5}px)`;
+        document.querySelector('.card-2').style.transform = `rotate(3deg) translate(${x*-0.3}px, ${y*0.3}px)`;
+        document.querySelector('.card-3').style.transform = `rotate(1deg) translate(${x*0.4}px, ${y*-0.4}px)`;
+      });
+    }
+  </script>
+
+</body>
+</html>

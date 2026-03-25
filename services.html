@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Web Design, Graphic Design & Vinyl Graphics | Serious Onions</title>
+  <meta name="description" content="Web design, graphic design, branding, stationery and vinyl graphics. Three services done properly by a small studio in Kent.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .svc-list { padding: 0 0 100px; }
+    .svc-item {
+      display: grid; grid-template-columns: 260px 1fr; gap: 40px;
+      padding: 44px 0; border-bottom: 1px solid var(--border); align-items: start;
+    }
+    .svc-item:first-child { border-top: 1px solid var(--border); }
+    .svc-item h3 {
+      font-family: var(--serif); font-size: 26px; color: var(--dark); padding-top: 4px;
+    }
+    .svc-body p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .svc-body ul {
+      list-style: none; display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 8px;
+    }
+    .svc-body ul li {
+      font-size: 12px; font-weight: 500; color: var(--dark);
+      background: var(--bg2); padding: 5px 14px; border-radius: 100px;
+    }
+
+    @media (max-width: 800px) {
+      .svc-item { grid-template-columns: 1fr; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="logo"><a href="index.html">Serious Onions</a></div>
+    <div class="nav-links" id="navLinks">
+      <a href="services.html" class="active">Services</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Say hello</a>
+    </div>
+    <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')">&#9776;</button>
+  </nav>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <h1>Services</h1>
+      <p>Four things we're good at. We don't spread ourselves thin trying to do everything — we'd rather do these properly.</p>
+    </div>
+  </section>
+
+  <section class="svc-list">
+    <div class="wrap">
+
+      <div class="svc-item">
+        <h3>Websites</h3>
+        <div class="svc-body">
+          <p>We build websites that load quickly, look right on phones and actually help your business get enquiries. Not template sites with your logo stuck on top — properly built pages designed around what your customers need to see.</p>
+          <p>If you need e-commerce, we can set that up too. We'll recommend the right platform for your budget and handle the whole thing from design to going live.</p>
+          <ul>
+            <li>Responsive design</li>
+            <li>E-commerce</li>
+            <li>Hosting setup</li>
+            <li>Content writing</li>
+            <li>SEO basics</li>
+            <li>Analytics</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="svc-item">
+        <h3>Graphic design</h3>
+        <div class="svc-body">
+          <p>Your logo, your colours, your fonts, your social media templates — all the visual pieces that make your business look professional and consistent. We create brands from scratch or tidy up existing ones that have drifted.</p>
+          <p>We'll give you proper files in every format you'll ever need, with a simple guide so anyone on your team can use them without messing things up.</p>
+          <ul>
+            <li>Logo design</li>
+            <li>Brand guidelines</li>
+            <li>Business cards</li>
+            <li>Social media</li>
+            <li>Letterheads</li>
+            <li>Packaging</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="svc-item">
+        <h3>Brochures &amp; print</h3>
+        <div class="svc-body">
+          <p>Product catalogues, company brochures, leaflets, folders, menus — anything that gets printed. We handle the layout, the typesetting and produce print-ready files that won't give your printer a headache.</p>
+          <p>We've worked with enough printers to know the difference between what looks good on screen and what actually comes out well on paper. Bleed, trim, CMYK — we sort all of it.</p>
+          <ul>
+            <li>Brochures</li>
+            <li>Catalogues</li>
+            <li>Flyers &amp; leaflets</li>
+            <li>Menus</li>
+            <li>Folders</li>
+            <li>Exhibition panels</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="svc-item">
+        <h3>Vinyl graphics</h3>
+        <div class="svc-body">
+          <p>Full van wraps, partial wraps, window graphics, shop fascias, wall decals and floor graphics. We design the artwork to the exact dimensions of your vehicle or space, and can coordinate fitting through our trusted installers.</p>
+          <p>Your van is out there doing thousands of miles a year. A decent wrap turns every journey into advertising. Same goes for your shop front — first impressions matter.</p>
+          <ul>
+            <li>Full vehicle wraps</li>
+            <li>Partial wraps</li>
+            <li>Window graphics</li>
+            <li>Shop fascias</li>
+            <li>Wall &amp; floor decals</li>
+            <li>Exhibition graphics</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <div class="cta-band-inner">
+        <h2>Need a quote? We're quick to reply.</h2>
+        <a href="contact.html" class="btn">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="logo">Serious Onions</div>
+          <p>Design studio, UK</p>
+        </div>
+        <div class="footer-links">
+          <a href="services.html">Services</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-areas"><h4>Areas We Cover</h4><div class="footer-area-links"><a href="web-design-folkestone.html">Folkestone</a><a href="web-design-hythe.html">Hythe</a><a href="web-design-dover.html">Dover</a><a href="web-design-canterbury.html">Canterbury</a><a href="web-design-ashford.html">Ashford</a><a href="web-design-lyminge.html">Lyminge</a><a href="web-design-dymchurch.html">Dymchurch</a><a href="graphic-design-folkestone.html">Graphic Design Folkestone</a><a href="graphic-design-canterbury.html">Graphic Design Canterbury</a><a href="vinyl-graphics-folkestone.html">Vinyl Graphics Folkestone</a><a href="vinyl-graphics-ashford.html">Vinyl Graphics Ashford</a><a href="graphic-design-romney-marsh.html">Romney Marsh</a></div></div>
+      <div class="footer-copy">&copy; 2026 Serious Onions</div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+    });
+  </script>
+
+</body>
+</html>

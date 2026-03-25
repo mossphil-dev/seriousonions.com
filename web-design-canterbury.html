@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Design Canterbury — Serious Onions</title>
+  <meta name="description" content="Professional web design in Canterbury. Custom websites for local businesses. Fast, responsive and SEO-friendly. Call today.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero { padding: 160px 0 60px; }
+    .page-hero .label { margin-bottom: 12px; }
+    .page-hero h1 { font-family: var(--display); font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: var(--dark); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 16px; }
+    .page-hero h1 em { font-style: italic; color: var(--accent); }
+    .page-hero p { font-size: 17px; color: var(--muted); max-width: 520px; line-height: 1.7; }
+    .local-content { padding: 80px 0; }
+    .local-content h2 { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--dark); margin-bottom: 16px; letter-spacing: -0.5px; }
+    .local-content p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 20px; max-width: 700px; }
+    .local-services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 40px 0; }
+    .local-svc { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: border-color 0.2s, transform 0.3s, box-shadow 0.3s; }
+    .local-svc:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .local-svc h3 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .local-svc p { font-size: 13px; margin-bottom: 0; }
+    .local-cta { padding: 80px 0; background: var(--dark); color: #fff; text-align: center; }
+    .local-cta h2 { color: #fff; margin-bottom: 12px; }
+    .local-cta p { color: #aaa; margin: 0 auto 28px; }
+    @media (max-width: 700px) { .local-services { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-mark">
+          <svg class="logo-svg" viewBox="0 0 48 48" width="40" height="40">
+            <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="24" cy="24" r="6" fill="currentColor"/>
+          </svg>
+          <span class="logo-text">serious<em>onions</em></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html" class="nav-cta">Let's Talk</a>
+        </div>
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="label reveal">Web Design Canterbury</div>
+      <h1 class="reveal">Web Design in <em>Canterbury</em></h1>
+      <p class="reveal">Custom website design for Canterbury businesses — from the cathedral quarter to the university campus and everywhere in between.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="local-content">
+    <div class="wrap">
+      <h2 class="reveal">Web Design Services in Canterbury</h2>
+      <p class="reveal">Canterbury is one of the busiest cities in Kent — and one of the most competitive places to run a business. Between the tourists drawn by the cathedral and the World Heritage Site, the student population from UCA, Canterbury Christ Church and the University of Kent, and a high street that fights hard to hold its own against online giants, there's a constantly shifting mix of people looking for local businesses to spend their money with. The question is whether they can find you.</p>
+      <p class="reveal">The hospitality sector in Canterbury is huge. Restaurants, cafés, bars and hotels compete for the same footfall every single week. A well-designed website with good photography, clear menus, easy booking links and strong local SEO is no longer optional — it's table stakes. The same goes for retail and services: if your site looks like it was built in 2012 and takes ten seconds to load on a phone, students and tourists won't wait around. They'll find someone else.</p>
+      <p class="reveal">We build websites for Canterbury businesses that are worth being proud of. Whether you're a restaurant in the city centre, a creative business near the Westgate Towers, a student-facing service or a local trade — we'll build you something that performs. Not a template, not a drag-and-drop job. A proper website designed around your customers and your goals.</p>
+
+      <div class="local-services">
+        <div class="local-svc reveal">
+          <h3>Business Websites</h3>
+          <p>Professional sites for Canterbury businesses of all kinds — hospitality, retail, creative, trades. Built to show up in local searches and convert visitors into customers.</p>
+        </div>
+        <div class="local-svc reveal">
+          <h3>E-commerce</h3>
+          <p>Online shops for Canterbury retailers who want to sell beyond the high street. Clean, fast and easy for customers to use on any device.</p>
+        </div>
+        <div class="local-svc reveal">
+          <h3>Website Redesign</h3>
+          <p>Got a site that's not keeping up with your business? We'll redesign it properly — keeping what works, fixing what doesn't.</p>
+        </div>
+      </div>
+
+      <p class="reveal">We work with businesses across East Kent from our studio, and Canterbury is a city we know well. If you want a website that holds its own in one of Kent's most competitive markets, we're ready when you are.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="local-cta">
+    <div class="wrap">
+      <h2 class="reveal">Need a website in Canterbury?</h2>
+      <p class="reveal">Tell us what you're after. We'll get back to you the same day with a clear, honest quote.</p>
+      <a href="contact.html" class="btn-primary reveal">Start a project &rarr;</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="logo-mark">
+            <svg class="logo-svg" viewBox="0 0 48 48" width="32" height="32"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+            <span class="logo-text">serious<em>onions</em></span>
+          </div>
+          <p>Design studio, UK</p>
+        </div>
+        <div class="footer-links">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-areas"><h4>Areas We Cover</h4><div class="footer-area-links"><a href="web-design-folkestone.html">Folkestone</a><a href="web-design-hythe.html">Hythe</a><a href="web-design-dover.html">Dover</a><a href="web-design-canterbury.html">Canterbury</a><a href="web-design-ashford.html">Ashford</a><a href="web-design-lyminge.html">Lyminge</a><a href="web-design-dymchurch.html">Dymchurch</a><a href="graphic-design-folkestone.html">Graphic Design Folkestone</a><a href="graphic-design-canterbury.html">Graphic Design Canterbury</a><a href="vinyl-graphics-folkestone.html">Vinyl Graphics Folkestone</a><a href="vinyl-graphics-ashford.html">Vinyl Graphics Ashford</a><a href="graphic-design-romney-marsh.html">Romney Marsh</a></div></div>
+      <div class="footer-copy">&copy; 2026 Serious Onions</div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('menuBtn').classList.toggle('active');
+    }
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    const cursor = document.getElementById('cursor');
+    let cx = 0, cy = 0, mx = 0, my = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function loop() {
+      cx += (mx - cx) * 0.15; cy += (my - cy) * 0.15;
+      cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px';
+      requestAnimationFrame(loop);
+    })();
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+    });
+  </script>
+
+</body>
+</html>

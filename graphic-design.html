@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphic Design, Logos &amp; Branding — Serious Onions</title>
+  <meta name="description" content="Logo design, brand identity, stationery and print design. Consistent, professional branding for businesses that want to stand out.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero { padding: 160px 0 60px; }
+    .page-hero .label { margin-bottom: 12px; }
+    .page-hero h1 { font-family: var(--display); font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: var(--dark); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 16px; }
+    .page-hero h1 em { font-style: italic; color: var(--accent); }
+    .page-hero p { font-size: 17px; color: var(--muted); max-width: 520px; line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR FOLLOWER -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-mark">
+          <svg class="logo-svg" viewBox="0 0 48 48" width="40" height="40"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+          <span class="logo-text">serious<em>onions</em></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html" class="active">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="contact.html" class="nav-cta">Let's Talk</a>
+        </div>
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="label reveal">Graphic Design</div>
+      <h1 class="reveal">Brands with <em>layers.</em></h1>
+      <p class="reveal">Logos, brand identities, stationery and print. Everything your business needs to look consistent and professional.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="reveal">
+          <p>A good logo isn't just something that looks nice on a business card. It's the foundation everything else sits on. We design logos that work at every size — from a van at 70mph to a favicon on a phone screen.</p>
+          <p>Beyond the logo, we create full brand identities: colour palettes, typography, iconography, and the rules that keep everything consistent. We put it all into a brand guide that means whoever touches your business in future — a sign writer, a printer, a web developer — knows exactly what to do.</p>
+          <p>We also design all the supporting pieces: business cards, letterheads, compliment slips, email signatures, social media templates, menus, brochures, leaflets, packaging, and anything else your business needs to look like it has its act together.</p>
+          <p>Everything is delivered in the file formats you actually need — print-ready PDFs, editable files, web-optimised versions. Not just a JPEG and a wave goodbye.</p>
+          <p>Most clients come to us at a crossroads — starting a new business, rebranding after a rough patch, or just tired of looking less professional than they are. Wherever you are, we'll get you sorted.</p>
+        </div>
+        <div class="reveal">
+          <div class="svc-item" style="margin-bottom: 0;">
+            <h3 style="margin-bottom: 20px;">What's included</h3>
+            <ul class="svc-tags" style="flex-direction: column; gap: 10px; align-items: flex-start;">
+              <li>Logo Design</li>
+              <li>Brand Identity</li>
+              <li>Business Cards</li>
+              <li>Letterheads</li>
+              <li>Stationery</li>
+              <li>Brand Guidelines</li>
+              <li>Packaging</li>
+              <li>Social Media Assets</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="reviews">
+    <div class="wrap">
+      <div class="section-intro reveal">
+        <div class="label">Kind words</div>
+        <h2>Clients who've been through it.</h2>
+      </div>
+      <div class="review-grid" style="grid-template-columns: 1fr;">
+        <div class="review-card reveal" style="max-width: 640px;">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"We'd been limping along with a logo I made in Microsoft Word for eight years. The rebrand Serious Onions did was unreal — professional, genuinely us, and the brand guide means our social media actually looks consistent now. It's changed how people see us."</p>
+          <cite>Sarah M. — Millbrook Kitchens</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-inner reveal">
+        <h2>Time to look as good<br>as you actually are?</h2>
+        <p>Tell us what you need. We'll get back to you the same day.</p>
+        <div class="cta-actions">
+          <a href="mailto:hello@seriousonions.com" class="btn-primary">hello@seriousonions.com</a>
+          <a href="contact.html" class="btn-ghost">Get a quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="logo-mark">
+            <svg class="logo-svg" viewBox="0 0 48 48" width="32" height="32"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+            <span class="logo-text">serious<em>onions</em></span>
+          </div>
+          <p>Design studio, UK</p>
+        </div>
+        <div class="footer-links">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-areas"><h4>Areas We Cover</h4><div class="footer-area-links"><a href="web-design-folkestone.html">Folkestone</a><a href="web-design-hythe.html">Hythe</a><a href="web-design-dover.html">Dover</a><a href="web-design-canterbury.html">Canterbury</a><a href="web-design-ashford.html">Ashford</a><a href="web-design-lyminge.html">Lyminge</a><a href="web-design-dymchurch.html">Dymchurch</a><a href="graphic-design-folkestone.html">Graphic Design Folkestone</a><a href="graphic-design-canterbury.html">Graphic Design Canterbury</a><a href="vinyl-graphics-folkestone.html">Vinyl Graphics Folkestone</a><a href="vinyl-graphics-ashford.html">Vinyl Graphics Ashford</a><a href="graphic-design-romney-marsh.html">Romney Marsh</a></div></div>
+      <div class="footer-copy">&copy; 2026 Serious Onions</div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('menuBtn').classList.toggle('active');
+    }
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-scale').forEach(el => obs.observe(el));
+
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('[data-target]').forEach(n => {
+            const target = +n.dataset.target;
+            let current = 0;
+            const step = Math.max(1, Math.ceil(target / 30));
+            const timer = setInterval(() => {
+              current += step;
+              if (current >= target) { current = target; clearInterval(timer); }
+              n.textContent = current + (target > 0 ? '+' : '');
+            }, 40);
+          });
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.about-stats').forEach(c => counterObs.observe(c));
+
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, .work-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+    });
+  </script>
+
+</body>
+</html>

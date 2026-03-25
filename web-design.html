@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Design — Serious Onions</title>
+  <meta name="description" content="Custom website design for small businesses. Fast, responsive sites that get enquiries. No templates, no bloat.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero { padding: 160px 0 60px; }
+    .page-hero .label { margin-bottom: 12px; }
+    .page-hero h1 { font-family: var(--display); font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: var(--dark); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 16px; }
+    .page-hero h1 em { font-style: italic; color: var(--accent); }
+    .page-hero p { font-size: 17px; color: var(--muted); max-width: 520px; line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR FOLLOWER -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-mark">
+          <svg class="logo-svg" viewBox="0 0 48 48" width="40" height="40"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+          <span class="logo-text">serious<em>onions</em></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="web-design.html" class="active">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="contact.html" class="nav-cta">Let's Talk</a>
+        </div>
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="label reveal">Web Design</div>
+      <h1 class="reveal">Websites that work as<br>hard as <em>you do.</em></h1>
+      <p class="reveal">Custom-built sites designed to get your phone ringing. Not template jobs with your logo slapped on.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES CONTENT -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="reveal">
+          <p>We build every site from scratch. No WordPress themes bought off a marketplace, no drag-and-drop builders with 90 plugins slowing everything down. Each site is designed around your customers and how they use your business.</p>
+          <p>Every site we build is fully responsive — meaning it looks and works properly on phones, tablets and desktops. We obsess over loading speed because slow sites lose customers before they've even read a word.</p>
+          <p>We handle SEO fundamentals as part of every build: clean code, proper heading structure, meta descriptions, image optimisation, fast page speed scores. We set you up to be found.</p>
+          <p>From single-page brochure sites to full e-commerce builds, we scope each project properly before starting. If you only need four pages, we won't sell you twenty. If you need a booking system, a shop, or a members area, we can do that too.</p>
+          <p>We also set up a content management system so you can update your own site — add a news post, change your opening hours, update your menu — without calling us every time. We'll train you up before we hand it over.</p>
+          <p>Hosting, domain setup, SSL certificates, Google Analytics — we take care of all of it so you don't have to.</p>
+        </div>
+        <div class="reveal">
+          <div class="svc-item" style="margin-bottom: 0;">
+            <h3 style="margin-bottom: 20px;">What's included</h3>
+            <ul class="svc-tags" style="flex-direction: column; gap: 10px; align-items: flex-start;">
+              <li>Responsive Design</li>
+              <li>E-commerce</li>
+              <li>Content Management</li>
+              <li>SEO Optimisation</li>
+              <li>Hosting Setup</li>
+              <li>Analytics</li>
+              <li>Speed Optimisation</li>
+              <li>Ongoing Support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="reviews">
+    <div class="wrap">
+      <div class="section-intro reveal">
+        <div class="label">Kind words</div>
+        <h2>Clients who've been through it.</h2>
+      </div>
+      <div class="review-grid" style="grid-template-columns: 1fr;">
+        <div class="review-card reveal" style="max-width: 640px;">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"We had a website before but it was embarrassing — slow, didn't work on mobile and hadn't been touched in years. Serious Onions rebuilt the whole thing in three weeks and our enquiries doubled within a month. Genuinely couldn't believe the difference."</p>
+          <cite>Rachel T. — The Walled Garden Restaurant</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-inner reveal">
+        <h2>Ready for a website<br>that actually works?</h2>
+        <p>Tell us what you need. We'll get back to you the same day.</p>
+        <div class="cta-actions">
+          <a href="mailto:hello@seriousonions.com" class="btn-primary">hello@seriousonions.com</a>
+          <a href="contact.html" class="btn-ghost">Get a quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="logo-mark">
+            <svg class="logo-svg" viewBox="0 0 48 48" width="32" height="32"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+            <span class="logo-text">serious<em>onions</em></span>
+          </div>
+          <p>Design studio, UK</p>
+        </div>
+        <div class="footer-links">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-areas"><h4>Areas We Cover</h4><div class="footer-area-links"><a href="web-design-folkestone.html">Folkestone</a><a href="web-design-hythe.html">Hythe</a><a href="web-design-dover.html">Dover</a><a href="web-design-canterbury.html">Canterbury</a><a href="web-design-ashford.html">Ashford</a><a href="web-design-lyminge.html">Lyminge</a><a href="web-design-dymchurch.html">Dymchurch</a><a href="graphic-design-folkestone.html">Graphic Design Folkestone</a><a href="graphic-design-canterbury.html">Graphic Design Canterbury</a><a href="vinyl-graphics-folkestone.html">Vinyl Graphics Folkestone</a><a href="vinyl-graphics-ashford.html">Vinyl Graphics Ashford</a><a href="graphic-design-romney-marsh.html">Romney Marsh</a></div></div>
+      <div class="footer-copy">&copy; 2026 Serious Onions</div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('menuBtn').classList.toggle('active');
+    }
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-scale').forEach(el => obs.observe(el));
+
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('[data-target]').forEach(n => {
+            const target = +n.dataset.target;
+            let current = 0;
+            const step = Math.max(1, Math.ceil(target / 30));
+            const timer = setInterval(() => {
+              current += step;
+              if (current >= target) { current = target; clearInterval(timer); }
+              n.textContent = current + (target > 0 ? '+' : '');
+            }, 40);
+          });
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.about-stats').forEach(c => counterObs.observe(c));
+
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, .work-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+    });
+  </script>
+
+</body>
+</html>

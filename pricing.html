@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — Simple, Fixed Prices | Serious Onions</title>
+  <meta name="description" content="No hidden costs, no hourly rates. Website from £350, branding packages from £550. Know exactly what you're paying before we start.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero { padding: 160px 0 60px; }
+    .page-hero .label { margin-bottom: 12px; }
+    .page-hero h1 { font-family: var(--display); font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: var(--dark); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 16px; }
+    .page-hero h1 em { font-style: italic; color: var(--accent); }
+    .page-hero p { font-size: 17px; color: var(--muted); max-width: 520px; line-height: 1.7; }
+
+    .pricing-section { padding: 0 0 100px; }
+    .pricing-intro { font-size: 16px; color: var(--muted); max-width: 600px; line-height: 1.8; margin-bottom: 56px; }
+    .pricing-intro strong { color: var(--dark); }
+
+    .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+    .price-card {
+      background: var(--white); border: 2px solid var(--border); border-radius: 16px;
+      padding: 36px 28px; position: relative; display: flex; flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .price-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
+    .price-card.featured {
+      border-color: var(--accent);
+      box-shadow: 0 8px 32px rgba(255,87,34,0.12);
+    }
+    .price-card.featured::before {
+      content: 'Most Popular';
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: #fff; font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 4px 16px; border-radius: 100px;
+    }
+
+    .price-name {
+      font-family: var(--display); font-size: 20px; font-weight: 700;
+      color: var(--dark); margin-bottom: 8px;
+    }
+    .price-desc {
+      font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 20px;
+      min-height: 42px;
+    }
+    .price-amount {
+      font-family: var(--display); font-size: 48px; font-weight: 800;
+      color: var(--dark); line-height: 1; margin-bottom: 4px;
+    }
+    .price-amount span { font-size: 24px; font-weight: 600; }
+    .price-vat { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+
+    .price-features { flex: 1; margin-bottom: 28px; }
+    .price-features li {
+      font-size: 14px; color: var(--text); padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+    .price-features li:last-child { border-bottom: none; }
+    .price-features .tick { color: var(--accent); font-weight: 700; flex-shrink: 0; font-size: 16px; }
+
+    .price-delivery {
+      font-size: 12px; font-weight: 600; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;
+    }
+
+    .price-btn {
+      display: block; text-align: center; padding: 14px; border-radius: 100px;
+      font-size: 14px; font-weight: 600; transition: background 0.2s, transform 0.2s;
+    }
+    .price-btn-outline {
+      border: 1.5px solid var(--border); color: var(--dark);
+    }
+    .price-btn-outline:hover { border-color: var(--dark); background: var(--dark); color: #fff; }
+    .price-btn-fill {
+      background: var(--accent); color: #fff; border: none;
+      box-shadow: 0 4px 16px rgba(255,87,34,0.25);
+    }
+    .price-btn-fill:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    /* EXTRAS */
+    .extras { padding: 80px 0; background: var(--dark); color: #fff; }
+    .extras h2 { font-family: var(--display); font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .extras > .wrap > p { font-size: 15px; color: #999; margin-bottom: 40px; }
+    .extras-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .extra-item {
+      padding: 24px; border: 1px solid #333; border-radius: var(--radius);
+      transition: border-color 0.2s;
+    }
+    .extra-item:hover { border-color: var(--accent); }
+    .extra-item h4 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .extra-item p { font-size: 13px; color: #999; line-height: 1.5; margin-bottom: 6px; }
+    .extra-price { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--accent); }
+
+    /* FAQ */
+    .faq { padding: 80px 0; }
+    .faq h2 { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--dark); margin-bottom: 32px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .faq-item h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .faq-item p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    .pricing-cta { padding: 80px 0; text-align: center; background: var(--accent-light); }
+    .pricing-cta h2 { font-family: var(--display); font-size: clamp(24px, 3vw, 36px); font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+    .pricing-cta p { font-size: 15px; color: var(--muted); margin-bottom: 28px; }
+
+    @media (max-width: 900px) {
+      .pricing-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .extras-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 550px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+
+  <nav id="navbar">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-mark">
+          <svg class="logo-svg" viewBox="0 0 48 48" width="40" height="40"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+          <span class="logo-text">serious<em>onions</em></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html" class="nav-cta">Let's Talk</a>
+        </div>
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="label reveal">Pricing</div>
+      <h1 class="reveal">You need a site.<br>We <em>build it.</em></h1>
+      <p class="reveal">No hourly rates. No surprise invoices. Pick a package, tell us what you need, and we get on with it.</p>
+    </div>
+  </section>
+
+  <section class="pricing-section">
+    <div class="wrap">
+      <p class="pricing-intro reveal"><strong>Fixed prices. Fast turnaround.</strong> Every package includes a mobile-responsive website, basic SEO setup, and all the files you need. No contracts, no monthly fees, no nonsense.</p>
+
+      <div class="pricing-grid">
+
+        <!-- STARTER -->
+        <div class="price-card reveal">
+          <div class="price-name">Starter</div>
+          <div class="price-desc">A professional website, built and live in 3 days.</div>
+          <div class="price-amount"><span>£</span>350</div>
+          <div class="price-vat">+VAT</div>
+          <div class="price-delivery">3 day turnaround</div>
+          <ul class="price-features">
+            <li><span class="tick">&#10003;</span> Custom designed website</li>
+            <li><span class="tick">&#10003;</span> Mobile responsive</li>
+            <li><span class="tick">&#10003;</span> Up to 5 pages</li>
+            <li><span class="tick">&#10003;</span> Contact form</li>
+            <li><span class="tick">&#10003;</span> Basic SEO setup</li>
+            <li><span class="tick">&#10003;</span> Google Analytics</li>
+          </ul>
+          <a href="contact.html" class="price-btn price-btn-outline">Get started</a>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="price-card featured reveal">
+          <div class="price-name">Business</div>
+          <div class="price-desc">Website + stationery, print-ready and looking sharp.</div>
+          <div class="price-amount"><span>£</span>550</div>
+          <div class="price-vat">+VAT</div>
+          <div class="price-delivery">5 day turnaround</div>
+          <ul class="price-features">
+            <li><span class="tick">&#10003;</span> Everything in Starter</li>
+            <li><span class="tick">&#10003;</span> Business card design</li>
+            <li><span class="tick">&#10003;</span> Letterhead design</li>
+            <li><span class="tick">&#10003;</span> Comp slip design</li>
+            <li><span class="tick">&#10003;</span> Print-ready PDF files</li>
+            <li><span class="tick">&#10003;</span> Print arranging available</li>
+          </ul>
+          <a href="contact.html" class="price-btn price-btn-fill">Get started</a>
+        </div>
+
+        <!-- BRAND -->
+        <div class="price-card reveal">
+          <div class="price-name">Brand</div>
+          <div class="price-desc">Website + logo design + full stationery package.</div>
+          <div class="price-amount"><span>£</span>750</div>
+          <div class="price-vat">+VAT</div>
+          <div class="price-delivery">7 day turnaround</div>
+          <ul class="price-features">
+            <li><span class="tick">&#10003;</span> Everything in Business</li>
+            <li><span class="tick">&#10003;</span> Custom logo design</li>
+            <li><span class="tick">&#10003;</span> Logo variations &amp; files</li>
+            <li><span class="tick">&#10003;</span> Brand colour palette</li>
+            <li><span class="tick">&#10003;</span> Brand guidelines</li>
+            <li><span class="tick">&#10003;</span> Social media templates</li>
+          </ul>
+          <a href="contact.html" class="price-btn price-btn-outline">Get started</a>
+        </div>
+
+        <!-- FULL WORKS -->
+        <div class="price-card reveal">
+          <div class="price-name">The Full Works</div>
+          <div class="price-desc">Website, logo, stationery + vinyl graphics for 2 vehicles.</div>
+          <div class="price-amount"><span>£</span>1,000</div>
+          <div class="price-vat">+VAT</div>
+          <div class="price-delivery">10 day turnaround</div>
+          <ul class="price-features">
+            <li><span class="tick">&#10003;</span> Everything in Brand</li>
+            <li><span class="tick">&#10003;</span> Vehicle graphics design</li>
+            <li><span class="tick">&#10003;</span> 2 vehicles included</li>
+            <li><span class="tick">&#10003;</span> Print-ready vinyl artwork</li>
+            <li><span class="tick">&#10003;</span> Fitting coordination</li>
+            <li><span class="tick">&#10003;</span> Priority support</li>
+          </ul>
+          <a href="contact.html" class="price-btn price-btn-outline">Get started</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXTRAS -->
+  <section class="extras">
+    <div class="wrap">
+      <h2 class="reveal">Need something extra?</h2>
+      <p class="reveal">Add any of these to your package.</p>
+      <div class="extras-grid">
+        <div class="extra-item reveal">
+          <h4>Additional Pages</h4>
+          <p>Extra pages beyond what's included in your package</p>
+          <div class="extra-price">£30 per page</div>
+        </div>
+        <div class="extra-item reveal">
+          <h4>E-commerce</h4>
+          <p>Online shop with product listings, cart and checkout</p>
+          <div class="extra-price">From £200</div>
+        </div>
+        <div class="extra-item reveal">
+          <h4>Print Run</h4>
+          <p>We handle the printing — business cards, leaflets, stationery</p>
+          <div class="extra-price">From £40</div>
+        </div>
+        <div class="extra-item reveal">
+          <h4>Additional Vehicle</h4>
+          <p>Extra vehicle vinyl graphics beyond the 2 in Full Works</p>
+          <div class="extra-price">£150 per vehicle</div>
+        </div>
+        <div class="extra-item reveal">
+          <h4>SEO Location Pages</h4>
+          <p>Dedicated pages to rank for your local area</p>
+          <div class="extra-price">£25 per page</div>
+        </div>
+        <div class="extra-item reveal">
+          <h4>Hosting &amp; Domain</h4>
+          <p>We set up and manage your hosting and domain name</p>
+          <div class="extra-price">£10/month</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="wrap">
+      <h2 class="reveal">Common questions</h2>
+      <div class="faq-item reveal">
+        <h4>Do I own the website?</h4>
+        <p>Yes. Once it's paid for, it's yours. All files, all designs, everything. No lock-in, no monthly fees for the site itself.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h4>What do I need to provide?</h4>
+        <p>Your content (text and images), your logo if you have one, and any preferences on colours or style. If you don't have content yet, we can help with that too.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h4>Can you really build a site in 3 days?</h4>
+        <p>Yes — as long as you get us the content promptly. The clock starts when we have everything we need.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h4>What if I need changes after it's live?</h4>
+        <p>Small tweaks in the first 2 weeks are included. After that, changes are charged at a fair hourly rate or we can set up a simple monthly retainer.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h4>Do you do WordPress?</h4>
+        <p>We can, but we usually recommend against it for small business sites. Static sites are faster, more secure and cheaper to host. We'll advise on what's best for you.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h4>What about the vinyl fitting?</h4>
+        <p>We design the artwork and produce print-ready files. We coordinate with trusted local fitters for the installation — or you can use your own.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pricing-cta">
+    <div class="wrap reveal">
+      <h2>Ready to get started?</h2>
+      <p>Pick a package and tell us what you need. We'll confirm everything before we start.</p>
+      <a href="contact.html" class="btn-primary">Start a project &rarr;</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="logo-mark">
+            <svg class="logo-svg" viewBox="0 0 48 48" width="32" height="32"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+            <span class="logo-text">serious<em>onions</em></span>
+          </div>
+          <p>Design studio, UK</p>
+        </div>
+        <div class="footer-links">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-areas"><h4>Areas We Cover</h4><div class="footer-area-links"><a href="web-design-folkestone.html">Folkestone</a><a href="web-design-hythe.html">Hythe</a><a href="web-design-dover.html">Dover</a><a href="web-design-canterbury.html">Canterbury</a><a href="web-design-ashford.html">Ashford</a><a href="web-design-lyminge.html">Lyminge</a><a href="web-design-dymchurch.html">Dymchurch</a><a href="graphic-design-folkestone.html">Graphic Design Folkestone</a><a href="graphic-design-canterbury.html">Graphic Design Canterbury</a><a href="vinyl-graphics-folkestone.html">Vinyl Graphics Folkestone</a><a href="vinyl-graphics-ashford.html">Vinyl Graphics Ashford</a><a href="graphic-design-romney-marsh.html">Romney Marsh</a></div></div>
+      <div class="footer-copy">&copy; 2026 Serious Onions</div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('menuBtn').classList.toggle('active');
+    }
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    const cursor = document.getElementById('cursor');
+    let cx=0,cy=0,mx=0,my=0;
+    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+    (function loop(){cx+=(mx-cx)*0.15;cy+=(my-cy)*0.15;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(loop);})();
+    document.querySelectorAll('a, button, .price-card, .extra-item').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+    });
+  </script>
+
+</body>
+</html>

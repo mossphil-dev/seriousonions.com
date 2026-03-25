@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinyl Graphics &amp; Van Wraps — Serious Onions</title>
+  <meta name="description" content="Vehicle wraps, shop signage, window graphics and vinyl decals. Design, production and fitting across the UK.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero { padding: 160px 0 60px; }
+    .page-hero .label { margin-bottom: 12px; }
+    .page-hero h1 { font-family: var(--display); font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: var(--dark); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 16px; }
+    .page-hero h1 em { font-style: italic; color: var(--accent); }
+    .page-hero p { font-size: 17px; color: var(--muted); max-width: 520px; line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR FOLLOWER -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-mark">
+          <svg class="logo-svg" viewBox="0 0 48 48" width="40" height="40"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+          <span class="logo-text">serious<em>onions</em></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html" class="active">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="contact.html" class="nav-cta">Let's Talk</a>
+        </div>
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="label reveal">Vinyl Graphics</div>
+      <h1 class="reveal">Turn every surface into <em>advertising.</em></h1>
+      <p class="reveal">Van wraps, shop fronts, window graphics and signage. We design it, produce the artwork and coordinate fitting.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="reveal">
+          <p>Your van does thousands of miles a year. It parks outside jobs, sits on driveways, moves through towns. That's thousands of impressions a day from people who are often exactly the kind of customer you want. Make every one of those miles count.</p>
+          <p>We do full vehicle wraps and partial wraps — from full colour printed panels covering the entire vehicle to cut vinyl text and simple logo applications. We'll show you 3D vehicle mockups before anything gets printed so you know exactly what you're getting.</p>
+          <p>We also design and produce shop fascias, hoarding boards, window graphics, frosted vinyl, wall decals, floor graphics and exhibition stands. If it has a flat surface, we can probably put something on it.</p>
+          <p>We work with a network of trusted, experienced fitters across the UK. We coordinate the whole job — design, print, delivery and fit — so you don't have to chase anyone. You just tell us what you need and we handle the rest.</p>
+          <p>Materials matter. We use quality vinyl and laminates that last — not budget stock that fades and peels in a year. We'll be upfront about what each option costs and how long it'll last.</p>
+        </div>
+        <div class="reveal">
+          <div class="svc-item" style="margin-bottom: 0;">
+            <h3 style="margin-bottom: 20px;">What we cover</h3>
+            <ul class="svc-tags" style="flex-direction: column; gap: 10px; align-items: flex-start;">
+              <li>Full Wraps</li>
+              <li>Partial Wraps</li>
+              <li>Shop Fronts</li>
+              <li>Window Graphics</li>
+              <li>Wall Decals</li>
+              <li>Floor Graphics</li>
+              <li>Exhibition</li>
+              <li>Vehicle Livery</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="reviews">
+    <div class="wrap">
+      <div class="section-intro reveal">
+        <div class="label">Kind words</div>
+        <h2>Clients who've been through it.</h2>
+      </div>
+      <div class="review-grid" style="grid-template-columns: 1fr;">
+        <div class="review-card reveal" style="max-width: 640px;">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"No messing about. Got a quote the same day, approved a mockup the day after, and the van looked exactly like it. The fitter they organised was brilliant too — turned up on time, clean job, no complaints. Already had people pulling up at jobs asking who did it."</p>
+          <cite>Dave P. — Apex Electrical</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-inner reveal">
+        <h2>Ready to put your brand<br>on the road?</h2>
+        <p>Tell us what you need. We'll get back to you the same day.</p>
+        <div class="cta-actions">
+          <a href="mailto:hello@seriousonions.com" class="btn-primary">hello@seriousonions.com</a>
+          <a href="contact.html" class="btn-ghost">Get a quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="logo-mark">
+            <svg class="logo-svg" viewBox="0 0 48 48" width="32" height="32"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>
+            <span class="logo-text">serious<em>onions</em></span>
+          </div>
+          <p>Design studio, UK</p>
+        </div>
+        <div class="footer-links">
+          <a href="web-design.html">Web Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="vinyl-graphics.html">Vinyl Graphics</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-areas"><h4>Areas We Cover</h4><div class="footer-area-links"><a href="web-design-folkestone.html">Folkestone</a><a href="web-design-hythe.html">Hythe</a><a href="web-design-dover.html">Dover</a><a href="web-design-canterbury.html">Canterbury</a><a href="web-design-ashford.html">Ashford</a><a href="web-design-lyminge.html">Lyminge</a><a href="web-design-dymchurch.html">Dymchurch</a><a href="graphic-design-folkestone.html">Graphic Design Folkestone</a><a href="graphic-design-canterbury.html">Graphic Design Canterbury</a><a href="vinyl-graphics-folkestone.html">Vinyl Graphics Folkestone</a><a href="vinyl-graphics-ashford.html">Vinyl Graphics Ashford</a><a href="graphic-design-romney-marsh.html">Romney Marsh</a></div></div>
+      <div class="footer-copy">&copy; 2026 Serious Onions</div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('menuBtn').classList.toggle('active');
+    }
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-scale').forEach(el => obs.observe(el));
+
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('[data-target]').forEach(n => {
+            const target = +n.dataset.target;
+            let current = 0;
+            const step = Math.max(1, Math.ceil(target / 30));
+            const timer = setInterval(() => {
+              current += step;
+              if (current >= target) { current = target; clearInterval(timer); }
+              n.textContent = current + (target > 0 ? '+' : '');
+            }, 40);
+          });
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.about-stats').forEach(c => counterObs.observe(c));
+
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, .work-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+    });
+  </script>
+
+</body>
+</html>
