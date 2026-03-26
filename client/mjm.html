@@ -101,6 +101,7 @@
         <button onclick="setView('tablet', this)">Tablet</button>
         <button onclick="setView('mobile', this)">Mobile</button>
       </div>
+      <button class="logout-btn" id="fullscreenBtn" onclick="toggleFullscreen()">Fullscreen</button>
       <button class="logout-btn" onclick="logout()">Log out</button>
     </div>
   </div>
@@ -129,6 +130,41 @@
       document.getElementById('previewFrame').className = 'preview-frame ' + mode;
       document.querySelectorAll('.view-toggle button').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+    }
+
+    // Fullscreen toggle
+    var isFullscreen = false;
+    function toggleFullscreen() {
+      isFullscreen = !isFullscreen;
+      var bar = document.querySelector('.client-bar');
+      var fb = document.querySelector('.feedback-bar');
+      var wrap = document.querySelector('.preview-wrap');
+      var frame = document.getElementById('previewFrame');
+      var btn = document.getElementById('fullscreenBtn');
+      if (isFullscreen) {
+        bar.style.display = 'none';
+        fb.style.display = 'none';
+        wrap.style.paddingTop = '0';
+        frame.style.height = '100vh';
+        btn.textContent = 'Exit Fullscreen';
+        // Show a small floating exit button
+        var exit = document.createElement('button');
+        exit.id = 'exitFullscreen';
+        exit.textContent = 'Exit Fullscreen';
+        exit.style.cssText = 'position:fixed;top:12px;right:12px;z-index:999999;background:#333;color:#fff;border:none;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer;opacity:0.7;transition:opacity 0.2s;';
+        exit.onmouseenter = function(){this.style.opacity='1';};
+        exit.onmouseleave = function(){this.style.opacity='0.7';};
+        exit.onclick = toggleFullscreen;
+        document.body.appendChild(exit);
+      } else {
+        bar.style.display = '';
+        fb.style.display = '';
+        wrap.style.paddingTop = '';
+        frame.style.height = '';
+        btn.textContent = 'Fullscreen';
+        var exit = document.getElementById('exitFullscreen');
+        if (exit) exit.remove();
+      }
     }
 
     // Logout
